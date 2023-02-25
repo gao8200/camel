@@ -1,0 +1,35 @@
+package com.practice.routes;
+
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.jackson.JacksonDataFormat;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.practice.pojo.Employee;
+
+@Component
+public class CDirectRoute extends RouteBuilder {
+	
+
+	@Autowired
+	DoSomethingC doSomething;
+	
+	@Override
+	public void configure() throws Exception {
+		// TODO Auto-generated method stub
+		from("direct:C")
+		.routeId("CDirectRoute")
+		.unmarshal(new JacksonDataFormat(Employee.class))
+		.process(doSomething)		
+		.marshal().json()
+		.log("CCCCCCCCCCCCCCC here")
+		//.to("stream:out")
+		.end();
+		//.log("--------------------------------------------------------")
+		 //.unmarshal(new JacksonDataFormat(Employee.class))		 
+		// .bean(emp,"toString()")
+		//.to("stream:out");
+		 
+	}
+	
+}
