@@ -19,16 +19,11 @@ public class CDirectRoute extends RouteBuilder {
 		// TODO Auto-generated method stub
 		from("direct:C")
 		.routeId("CDirectRoute")
+		//can call backend here and parse the response
 		.unmarshal(new JacksonDataFormat(Employee.class))
 		.process(doSomething)		
-		.marshal().json()
-		.log("CCCCCCCCCCCCCCC here")
-		//.to("stream:out")
-		.end();
-		//.log("--------------------------------------------------------")
-		 //.unmarshal(new JacksonDataFormat(Employee.class))		 
-		// .bean(emp,"toString()")
-		//.to("stream:out");
+		.marshal().json() 
+		.end(); //marks the multicast as successful
 		 
 	}
 	

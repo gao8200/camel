@@ -19,17 +19,13 @@ public class ADirectRoute extends RouteBuilder {
 		// TODO Auto-generated method stub
 		from("direct:A")
 		.routeId("ADirectRoute")
+		//can call backend here and parse the response
 		.unmarshal(new JacksonDataFormat(Employee.class))
 		.process(doSomething)		
-		.marshal().json()
-		//.log("AAAAAAAAAAA here")
-		.to("stream:out")
-		.end();
-		//.log("--------------------------------------------------------");
-		 //.unmarshal(new JacksonDataFormat(Employee.class))		 
-		// .bean(emp,"toString()")
-		//.to("stream:out");
-		 
+		.marshal().json() 
+		//.to("stream:out")
+		.end();   //marks the multicast as successful
+
 	}
 	
 }

@@ -45,7 +45,13 @@
 <artifactId>camel-gson-starter</artifactId>
 <version>3.20.2</version>
 </dependency>
-		
+
+ <dependency>
+    <groupId>org.apache.camel</groupId>
+    <artifactId>camel-http</artifactId>
+<version>3.20.2</version>
+</dependency>
+
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-stream</artifactId>

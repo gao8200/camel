@@ -10,13 +10,13 @@ import com.practice.pojo.Employee;
 public class DoSomethingB implements Processor {
 	
 	@Override
-	public void process(Exchange exchange) throws Exception {
-		
+	public void process(Exchange exchange) throws Exception {	   
        Employee oscar=exchange.getIn().getBody(Employee.class);
        oscar.setShift("MORNING");      
        oscar.setbRouteMessage("SUCCESS");
-       exchange.getIn().setBody(oscar);
-       System.out.println("BBBBBBBBBBBB Exchange: "+exchange.getExchangeId());
+       exchange.getIn().setBody(oscar); 
+       Thread.sleep(500);
+      // System.out.println("BBBBBBBBBBBB Exchange: "+exchange.getExchangeId());
 	}
 
 }

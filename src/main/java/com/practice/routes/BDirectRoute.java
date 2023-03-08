@@ -18,16 +18,13 @@ public class BDirectRoute extends RouteBuilder {
 	public void configure() throws Exception {
 		// TODO Auto-generated method stub
 		from("direct:B")
-		.routeId("BDirectRoute")
+		.routeId("BDirectRoute")		
+		//can call backend here and parse the response
 		.unmarshal(new JacksonDataFormat(Employee.class))
 		.process(doSomething)		
-		.marshal().json()
-		//.log("BBBBBBBBBBBBB here")
-		.to("stream:out")
-		.end();
-		//.toD();
-		// .bean(emp,"toString()")
-		//.to("direct:orchestrate");
+		.marshal().json() 
+//		.throwException(new Exception("Something OCcurred")) //throws exception
+		.end(); //marks the multicast as successful 
 		 
 	}
 	

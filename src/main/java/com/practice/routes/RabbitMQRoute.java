@@ -16,7 +16,7 @@ public class RabbitMQRoute extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 	 
-		from("rabbitmq:rabbit-express?queue=rabbit-employee&autoDelete=false")
+		from("rabbitmq:rabbit-express?queue=rabbit-employee&autoDelete=false&routingKey=employee&addresses=localhost:5672")
 		.routeId("RECEIVE")
 	
 		/*

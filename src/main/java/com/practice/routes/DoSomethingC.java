@@ -16,8 +16,8 @@ public class DoSomethingC implements Processor {
        oscar.setShift("MORNING");      
        oscar.setcRouteMessage("FATAL");
        exchange.getIn().setBody(oscar);
-       System.out.println("CCCCCCCCCCC Exchange: "+exchange.getExchangeId());
-       
+     
+      Thread.sleep(5_000);
 	}
 
 }

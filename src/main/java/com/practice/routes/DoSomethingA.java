@@ -14,8 +14,8 @@ public class DoSomethingA implements Processor {
        Employee oscar=exchange.getIn().getBody(Employee.class);
        oscar.setShift("MORNING");   
        oscar.setaRouteMessage("ERROR");
-       exchange.getIn().setBody(oscar);
-       System.out.println("AAAAAAAAA Exchange: "+exchange.getExchangeId());
+       exchange.getIn().setBody(oscar); 
+       Thread.sleep(500);
 	}
 
 }

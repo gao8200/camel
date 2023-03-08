@@ -9,7 +9,7 @@ import com.google.gson.GsonBuilder;
 import com.practice.pojo.Employee;
 
 @Component
-public class EmployeeAggregation implements AggregationStrategy {
+public class EmployeeAggregation implements AggregationStrategy  {
 
     public Exchange aggregate(Exchange oldExchange, Exchange newExchange) {
         if (oldExchange == null) {
@@ -20,13 +20,15 @@ public class EmployeeAggregation implements AggregationStrategy {
         String oldBody = oldExchange.getIn().getBody(String.class);
         String newBody = newExchange.getIn().getBody(String.class);
         
-      //  System.out.println("OLD: "+oldBody);
-       // System.out.println("NEW: "+newBody);
+       System.out.println("OldBody: "+oldBody + "  ----  NewBody: "+newBody);
         
         // transform json string to POJO
         Gson gson = new GsonBuilder().create();        
         Employee oldE = gson.fromJson(oldBody, Employee.class);                
         Employee newE = gson.fromJson(newBody, Employee.class);
+        
+        if (oldE == null)
+          return oldExchange;
         
         // set only when  empty
         oldE.setaRouteMessage(newE.getaRouteMessage());
@@ -38,6 +40,7 @@ public class EmployeeAggregation implements AggregationStrategy {
         oldExchange.getIn().setBody(newJson);
         return oldExchange;
     }
+    
     
  
 }
